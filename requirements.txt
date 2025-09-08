@@ -1,0 +1,5 @@
+psutil>=5.9.0
+pywin32>=306; sys_platform == "win32"
+WMI>=1.5.1; sys_platform == "win32"
+tinytuya>=1.2.10
+python-dotenv>=1.0.0
