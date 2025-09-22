@@ -3,25 +3,18 @@ version: '3.8'
 services:
   tuya-smartplug:
     build: .
-    container_name: local-tuya-smartplug
+    container_name: local-tuya-smartplug-dev
     restart: unless-stopped
-    environment:
-      # Remote computer credentials
-      - REMOTE_COMPUTER=${REMOTE_COMPUTER}
-      - REMOTE_USERNAME=${REMOTE_USERNAME}
-      - REMOTE_PASSWORD=${REMOTE_PASSWORD}
-      
-      # Tuya device configuration
-      - DEVICE_ID=${DEVICE_ID}
-      - DEVICE_IP=${DEVICE_IP}
-      - LOCAL_KEY=${LOCAL_KEY}
-      - DP_ID=${DP_ID:-1}
-      
-      # Logging configuration
-      - LOGS_FOLDER=/app/logs
+    env_file:
+      - .env
     volumes:
-      # Mount logs directory to persist logs
+      - ./:/app:delegated
       - ./logs:/app/logs
+      - ./config:/app/config:ro
+    ports:
+      - "8000:8000"
+    environment:
+      - LOGS_FOLDER=/app/logs
     networks:
       - tuya-network
 

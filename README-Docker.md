@@ -64,7 +64,7 @@ The application uses Windows-specific libraries (`pywin32`, `WMI`) for remote ba
 
 - Remote battery monitoring via WMI will not work
 - The app will gracefully handle the missing WMI functionality
-- You can use the mock battery function for testing by uncommenting line 50 in `main.py`
+- You can use the mock battery function for testing by uncommenting the relevant code in `app.py`
 
 ### Network Requirements
 - The container needs network access to communicate with your Tuya smart plug
