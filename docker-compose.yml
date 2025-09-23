@@ -8,8 +8,6 @@ services:
     restart: unless-stopped
     ports:
       - "8001:8000"
-    volumes:
-      - /srv/dev-disk-by-uuid-1b96224b-a14e-4f97-bb09-035d598fb5df/docker/local-tuya-smartplug/local-tuya-smartplug/config:/config
     networks:
       - tuya-network
 
