@@ -343,15 +343,16 @@ async def check_last_ping():
 @app.on_event("startup")
 async def startup_event():
     """Initialize the application"""
-    # By default skip device initialization to avoid network checks at startup.
-    # Set environment variable SKIP_DEVICE_INIT to '0' or 'false' to enable initialization again.
-    skip_init = os.getenv("SKIP_DEVICE_INIT", "true").strip().lower()
-    if skip_init in ("0", "false", "no"):
-        logger.info("Device initialization enabled on startup (SKIP_DEVICE_INIT=%s)", skip_init)
-        await init_devices()
-    else:
-        logger.info("Device initialization skipped on startup (set SKIP_DEVICE_INIT=0 to enable)")
+    # # By default skip device initialization to avoid network checks at startup.
+    # # Set environment variable SKIP_DEVICE_INIT to '0' or 'false' to enable initialization again.
+    # skip_init = os.getenv("SKIP_DEVICE_INIT", "true").strip().lower()
+    # if skip_init in ("0", "false", "no"):
+    #     logger.info("Device initialization enabled on startup (SKIP_DEVICE_INIT=%s)", skip_init)
+    #     await init_devices()
+    # else:
+    #     logger.info("Device initialization skipped on startup (set SKIP_DEVICE_INIT=0 to enable)")
 
+    await init_devices()
     asyncio.create_task(check_last_ping())
 
 @app.post("/update")
