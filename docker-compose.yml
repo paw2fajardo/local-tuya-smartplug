@@ -7,7 +7,7 @@ services:
     container_name: local-tuya-smartplug
     restart: unless-stopped
     ports:
-      - "8001:8000"
+      - "8002:8000"
     networks:
       - tuya-network
 
